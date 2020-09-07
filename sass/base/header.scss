@@ -1,0 +1,36 @@
+header{
+    height: 70px;
+    background-color: #f3e9f1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_brand{
+
+    margin-left: 20px;
+    & {
+        .header_logo{
+            height: 65px;
+            
+        }
+    }
+    }
+    
+    ul{
+        margin-top: 15px;
+        margin-right: 20px;
+       
+    }
+    ul li {
+        display: inline-block;
+        margin: 10px;
+       
+      
+    }
+    
+    ul li a{
+        color:black;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+    }

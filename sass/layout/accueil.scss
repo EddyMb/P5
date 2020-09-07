@@ -1,0 +1,55 @@
+#main{
+    height: 500px;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5) ), url(/P5-Orinoco/images/vcam_4.jpg);
+    background-size: cover;
+    background-position: center;
+  
+    
+}
+
+.main_title{
+    position: relative;
+    top:100px;
+    left:40px;
+   
+    
+    &.titre{
+        color: white;
+    }
+
+    &.btn{
+        border: 1px solid yellow;
+        padding: 10px 25px;
+        color: white;
+        font-size: 17px;
+        text-decoration: none ;
+        text-transform: uppercase;
+    }
+}
+
+#camera{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#ours{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.camera_title{
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+.card_prix{
+    display:flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.prix{
+    font-size: 20px;
+}
+
+.Meubles{
+    margin-bottom: 30px;
+}
