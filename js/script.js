@@ -22,16 +22,35 @@ requete.onload = function () {
     }else alert('un probleme est intervenu veuillez actualiser la page');
 }
 
+/*
 function displayProduct(prod){
-    document.getElementById('content').innerHTML +=' <div class="card">'+
+    document.getElementById('content').innerHTML +='<div class="card">'+
     '<a href="produit.html"><img src="'+prod.imageUrl+'" class="card-img-top" alt="image camera 1"></a>'+
     '<div class="card-body">'+
       '<h5 class="card-title">'+prod.name+'</h5>'+
       '<p class="card-text">'+prod.description+'</p>'+
      ' <p class="card-price">'+prod.price+' euro</p>'+
-      '<a href="#" class="btn btn-primary">Voir produit</a>'+
+      '<a href="produit.html?given_id='+prod._id+'" class="btn btn-primary">Voir produit</a>'+
     '</div>'+
   '</div>';
+  
+}*/
+
+function displayProduct(prod){
+  document.getElementById('content').innerHTML += '<div class="col-md-4 col-sm-8 my-3">'+
+  '<div class="card" style="width: 18rem;">'+
+  '<a href="produit.html"><img src="'+prod.imageUrl+'" class="card-img-top" alt="image camera 1"></a>'+
+    '<div class="card-body">'+
+    '<h5 class="card-title">'+prod.name+'</h5>'+
+    '<p class="card-text">'+prod.description+'</p>'+
+    ' <p class="card-price">'+prod.price+' euro</p>'+
+    '<a href="produit.html?given_id='+prod._id+'" class="btn btn-primary">Voir produit</a>'+
+    '</div>'+
+
+  '</div>'+
+
+'</div>';
+  
 }
 
 
