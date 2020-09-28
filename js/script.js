@@ -31,7 +31,7 @@ function displayProduct(prod){
     '<h5 class="card-title">'+prod.name+'</h5>'+
     '<p class="card-text">'+prod.description+'</p>'+
     ' <p class="card-price">'+prod.price+' euro</p>'+
-    '<a href="produit.html?given_id='+prod._id+'" class="btn btn-primary">Voir produit</a>'+
+    '<a href="produit.html?given_id='+prod._id+'" class="add-cart btn-primary">Voir produit</a>'+
     '</div>'+
 
   '</div>'+

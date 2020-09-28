@@ -1,5 +1,7 @@
 //requette  avec ID du produit//
+
 let id = (new URL(document.location)).searchParams.get('given_id');
+
 
 const url ='http://localhost:3000/api/cameras/'+id;
 
@@ -15,7 +17,10 @@ requete.onload = function () {
     if(requete.readyState === XMLHttpRequest.DONE){
         if(requete.status === 200){
             let reponse = requete.response; // On stocke la reponse
+        
             displayCart(reponse);
+            let products = reponse;
+            
             
              
         }
@@ -43,41 +48,42 @@ function displayCart(prod){
     
    }
      
-     document.getElementById('content').innerHTML += '<label for="q">Quantité: </label>'+
-     '<select id="qt" name="q">'+
-      '<option value="1">1</option>'+
-      '<option value="2">2</option>'+
-      '<option value="3">3</option>'+
-      '<option value="4">4</option>'+
-      '<option value="5">5</option>'+
-       '</select>'+
-       '</div>'+
-      '<a href="" class="btn btn-primary">Voir panier</a>';
+     document.getElementById('content').innerHTML += '<label for="tentacles">Quantité:</label>'+
 
+     '<input type="number" id="tentacles" name="tentacles" min="0" max="50">';
+     
+     
+     document.getElementById('content').innerHTML +='<a href="" class="add-cart btn-primary">Ajouter au panier</a>';
+     let carts = document.querySelector('.add-cart');
+     carts.addEventListener('click', (e) => {
+      cartNumbers();
+      
+     })
+
+     function onLoadCartNumbers(){
+      let productNumbers = localStorage.getItem('cartNumbers');
+      if(productNumbers){
+        document.querySelector('span').textContent = productNumbers;
+      }
+     }
+    function cartNumbers(){
+      let productNumbers = localStorage.getItem('cartNumbers');
+    
+      productNumbers = parseInt(productNumbers);
+      console.log(productNumbers); // null
+
+      if(productNumbers){
+        localStorage.setItem('cartNumbers', productNumbers + 1); // on ajoute plus un par rapport aux panier qu'il avait deja//
+        document.querySelector('span').textContent = productNumbers +1;
+      } else // si localstotage est vide on lui ajoute
+      localStorage.setItem('cartNumbers', 1);
+      document.querySelector('span').textContent = 1;
+    }
+     
+    onLoadCartNumbers();
+     
+    
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Post
-/*
-requete.open('POST', url);
-requete.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-requete.responseType = 'json';
-requete.send('prenom=John');
-*/
 
