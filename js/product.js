@@ -17,16 +17,17 @@ requete.onload = function () {
     if(requete.readyState === XMLHttpRequest.DONE){
         if(requete.status === 200){
             let reponse = requete.response; // On stocke la reponse
-        
             displayCart(reponse);
-            let products = reponse;
+            clickCart(reponse);
             
             
-             
+            
+                 
         }
     }else
      alert('un probleme est intervenu, veuillez actualiser la page');
 }
+
 
 
 function displayCart(prod){
@@ -48,17 +49,33 @@ function displayCart(prod){
     
    }
      
-     document.getElementById('content').innerHTML += '<label for="tentacles">Quantité:</label>'+
+     
+    
+}
 
-     '<input type="number" id="tentacles" name="tentacles" min="0" max="50">';
+
+
+function quantiteCart(){
+  document.getElementById('content').innerHTML += '<label for="tentacles">Quantité:</label>'+
+
+  '<input type="number" id="tentacles" name="tentacles" min="0" max="50">';
+}
+
      
+     function clickCart(prix){
+      document.getElementById('content').innerHTML +='<a href="" class="add-cart btn-primary">Ajouter au panier</a>';
+      let carts = document.querySelector('.add-cart');
+      carts.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        cartNumbers();
+        clickProduct(prix);
+        
+        
+       
+      })
+     }
      
-     document.getElementById('content').innerHTML +='<a href="" class="add-cart btn-primary">Ajouter au panier</a>';
-     let carts = document.querySelector('.add-cart');
-     carts.addEventListener('click', (e) => {
-      cartNumbers();
-      
-     })
 
      function onLoadCartNumbers(){
       let productNumbers = localStorage.getItem('cartNumbers');
@@ -66,7 +83,9 @@ function displayCart(prod){
         document.querySelector('span').textContent = productNumbers;
       }
      }
+
     function cartNumbers(){
+    
       let productNumbers = localStorage.getItem('cartNumbers');
     
       productNumbers = parseInt(productNumbers);
@@ -75,15 +94,25 @@ function displayCart(prod){
       if(productNumbers){
         localStorage.setItem('cartNumbers', productNumbers + 1); // on ajoute plus un par rapport aux panier qu'il avait deja//
         document.querySelector('span').textContent = productNumbers +1;
-      } else // si localstotage est vide on lui ajoute
-      localStorage.setItem('cartNumbers', 1);
-      document.querySelector('span').textContent = 1;
+      } else {
+        localStorage.setItem('cartNumbers', 1);
+        document.querySelector('span').textContent = 1;
+      }                                      // si localstotage est vide on lui ajoute
+      
+    }
+
+    function clickProduct(product){
+     
+     let producto = localStorage.getItem("productsInCart");
+     if(producto == null){
+       producto.product +=1;
+     }
+     console.log("my cart is the ", product);
+     localStorage.setItem("productsInCart", JSON.stringify(product));
     }
      
     onLoadCartNumbers();
      
-    
-}
 
 
 
